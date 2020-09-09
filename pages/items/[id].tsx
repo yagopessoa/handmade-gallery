@@ -9,6 +9,7 @@ import {
   LeftContent,
   RightContent,
   Image,
+  ButtonWrapper,
 } from '../../styles/pages/items';
 import Card from '../../components/Card';
 
@@ -52,6 +53,10 @@ function Item({ item }: ItemProps) {
   const [mainDescription] = descriptions;
   const { text: description } = mainDescription;
 
+  const handleBack = () => {
+    window.history.back();
+  };
+
   return (
     <>
       <Head>
@@ -74,6 +79,9 @@ function Item({ item }: ItemProps) {
           </CardContent>
         </Card>
       </Container>
+      <ButtonWrapper>
+        <Button size="lg" text="Voltar" onClick={handleBack} />
+      </ButtonWrapper>
     </>
   );
 }

@@ -1,8 +1,14 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import { Button, Heading } from 'gestalt';
 
 import Card from '../components/Card';
 import { fetchAPI } from '../lib/api-prismic';
+import {
+  Container,
+  CardContent,
+  Image,
+  HeadingContainer,
+} from '../styles/pages';
 
 interface Image {
   image: {
@@ -36,20 +42,34 @@ interface HomeProps {
 }
 
 export default function Home({ items }: HomeProps) {
+  const handleItemClick = (path: string) => () => {
+    window.location.assign(path);
+  };
+
   return (
     <>
       <Head>
         <title>Handmade Gallery | Thais Kuga</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {items.map(({ node }) => (
-        <Card key={`post-${node._meta.uid}`}>
-          <h3>
-            <Link href={`items/${node._meta.uid}`}>{node.title[0].text}</Link>
-          </h3>
-          <span>{node.description[0].text}</span>
-        </Card>
-      ))}
+      <HeadingContainer>
+        <Heading size="lg">Handmade Gallery</Heading>
+      </HeadingContainer>
+      <Container>
+        {items.map(({ node }) => (
+          <Card key={`post-${node._meta.uid}`}>
+            <CardContent>
+              <Image src={node.images[0]?.image?.url} />
+              <h3>{node.title[0].text}</h3>
+              <Button
+                color="red"
+                text="Ver"
+                onClick={handleItemClick(`items/${node._meta.uid}`)}
+              />
+            </CardContent>
+          </Card>
+        ))}
+      </Container>
     </>
   );
 }

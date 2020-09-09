@@ -1,15 +1,13 @@
 import styled from 'styled-components';
+import { Button } from 'gestalt';
 
 import { BODY_TEXT_COLOR } from '../../_constants';
-
-// TODO: add responsiveness
 
 export const Container = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
   padding: 32px;
-  padding-top: 0;
 `;
 
 export const CardContent = styled.div`
@@ -17,6 +15,11 @@ export const CardContent = styled.div`
   max-width: calc(100vw - 128px);
   height: fit-content;
   display: flex;
+
+  @media (max-width: 902px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Image = styled.img.attrs(() => ({ alt: '' }))`
@@ -30,6 +33,10 @@ export const LeftContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 686px) {
+    width: 100%;
+  }
 `;
 
 export const RightContent = styled.div`
@@ -51,6 +58,34 @@ export const RightContent = styled.div`
 
   button {
     margin-top: 32px;
+    width: fit-content;
+  }
+
+  @media (max-width: 902px) {
+    width: 100%;
+    padding-left: 0;
+
+    h1 {
+      margin-top: 16px;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 686px) {
+    width: 100%;
+    max-width: 100%;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  button {
     width: fit-content;
   }
 `;
