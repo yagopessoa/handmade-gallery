@@ -84,6 +84,7 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-bottom: 64px;
 
   button {
     width: fit-content;
