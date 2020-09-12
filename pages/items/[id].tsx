@@ -43,15 +43,15 @@ interface ItemProps {
 }
 
 function Item({ item }: ItemProps) {
-  const { images, title: titles, description: descriptions, _meta } = item;
+  const { images, title: titles, description: descriptions, _meta } = item || {};
 
-  const { tags } = _meta;
+  const { tags } = _meta || {};
 
-  const [mainTitle] = titles;
-  const { text: title } = mainTitle;
+  const [mainTitle] = titles || [];
+  const { text: title } = mainTitle || {};
 
-  const [mainDescription] = descriptions;
-  const { text: description } = mainDescription;
+  const [mainDescription] = descriptions || [];
+  const { text: description } = mainDescription || {};
 
   const handleBack = () => {
     window.history.back();
