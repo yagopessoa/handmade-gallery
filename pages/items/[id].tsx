@@ -144,9 +144,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 }
 
 export async function getStaticPaths() {
-  const {
-    allItems: { edges },
-  } = await fetchAPI(
+  const res = await fetchAPI(
     `
     query {
       allItems {
@@ -162,6 +160,8 @@ export async function getStaticPaths() {
   `,
     {}
   );
+  const { allItems } = res || {};
+  const { edges } = allItems || {};
 
   const paths = edges.map(({ node }) => `/items/${node?._meta?.uid}`) || [];
 
