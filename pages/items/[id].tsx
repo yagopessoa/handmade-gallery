@@ -11,6 +11,7 @@ import {
   RightContent,
   Image,
   ButtonWrapper,
+  TagsContainer,
 } from '../../styles/pages/items';
 import Card from '../../components/Card';
 
@@ -22,6 +23,9 @@ interface Image {
 
 interface ItemProps {
   item: {
+    _meta: {
+      tags: string[];
+    };
     title: {
       text: string;
     }[];
@@ -39,7 +43,9 @@ interface ItemProps {
 }
 
 function Item({ item }: ItemProps) {
-  const { images, title: titles, description: descriptions } = item;
+  const { images, title: titles, description: descriptions, _meta } = item;
+
+  const { tags } = _meta;
 
   const [mainTitle] = titles;
   const { text: title } = mainTitle;
@@ -67,7 +73,7 @@ function Item({ item }: ItemProps) {
                 showThumbs={false}
                 showStatus={false}
               >
-                {images.map(({ image: { url } }) => (
+                {images?.map(({ image: { url } }) => (
                   <div>
                     <Image src={url} />
                   </div>
@@ -77,6 +83,16 @@ function Item({ item }: ItemProps) {
             <RightContent>
               <div>
                 <h1>{title}</h1>
+                <TagsContainer>
+                  {tags?.map(tag => (
+                    <Button
+                      role="link"
+                      size="sm"
+                      text={`#${tag}`}
+                      href={`/tags/${tag}/`}
+                    />
+                  ))}
+                </TagsContainer>
                 <span>{description}</span>
               </div>
               <Button color="red" size="lg" text="Comprar" />
@@ -96,14 +112,13 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
     `
     query($slug: String!, $lang: String!) {
       item(uid: $slug, lang: $lang) {
+        _meta {
+          tags
+        }
         title
         description
         images {
           image
-        }
-        category
-        tags {
-          tag
         }
         buylink {
           _linkType
@@ -122,7 +137,7 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
 
   return {
     props: {
-      item: item.item,
+      item: item?.item,
     },
     revalidate: 1,
   };
@@ -148,8 +163,10 @@ export async function getStaticPaths() {
     {}
   );
 
+  const paths = edges.map(({ node }) => `/items/${node?._meta?.uid}`) || [];
+
   return {
-    paths: edges.map(({ node }) => `/items/${node._meta.uid}`) || [],
+    paths,
     fallback: true,
   };
 }

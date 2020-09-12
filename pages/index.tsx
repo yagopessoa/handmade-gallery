@@ -24,16 +24,7 @@ interface Item {
     title: {
       text: string;
     }[];
-    description?: {
-      text: string;
-    }[];
     images: Image[];
-    category: string;
-    tags?: {
-      tag: string;
-    }[];
-    buyLink?: string;
-    imageLink?: string;
   };
 }
 
@@ -42,10 +33,6 @@ interface HomeProps {
 }
 
 export default function Home({ items }: HomeProps) {
-  const handleItemClick = (path: string) => () => {
-    window.location.assign(path);
-  };
-
   return (
     <>
       <Head>
@@ -62,9 +49,10 @@ export default function Home({ items }: HomeProps) {
               <Image src={images[0]?.image?.url} />
               <h3>{title[0].text}</h3>
               <Button
+                role="link"
                 color="red"
                 text="Ver"
-                onClick={handleItemClick(`items/${uid}`)}
+                href={`items/${uid}/`}
               />
             </CardContent>
           </Card>
@@ -85,19 +73,8 @@ export async function getServerSideProps() {
               uid
             }
             title
-            description
             images {
               image
-            }
-            category
-            tags {
-              tag
-            }
-            buylink {
-              _linkType
-            }
-            imagelink {
-              _linkType
             }
           }
         }
@@ -109,7 +86,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      items: items.allItems.edges,
+      items: items?.allItems?.edges,
     },
   };
 }

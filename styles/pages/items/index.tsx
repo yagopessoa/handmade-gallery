@@ -89,3 +89,14 @@ export const ButtonWrapper = styled.div`
     width: fit-content;
   }
 `;
+
+export const TagsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+
+  a {
+    margin: 0 8px 8px 0;
+  }
+`;

@@ -22,6 +22,10 @@ export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  a {
+    width: 100%;
+  }
 `;
 
 export const Image = styled.img.attrs(() => ({ alt: '' }))`

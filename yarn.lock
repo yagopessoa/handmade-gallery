@@ -1062,10 +1062,10 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/gestalt@^1.15.3":
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/@types/gestalt/-/gestalt-1.15.3.tgz#c5414fa13fd9121ccaec857ec7273df69a9569cd"
-  integrity sha512-iDHHSNi5hjI2Ipw0V0opCBU06J4uXBeQOqtpN9nuWiIUyYePfOEXjjG5AHyxqXV8/f6gKu2v16LGkZHjNFe/nA==
+"@types/gestalt@^12.13.0":
+  version "12.13.0"
+  resolved "https://registry.yarnpkg.com/@types/gestalt/-/gestalt-12.13.0.tgz#966ac4695ba89c65225d868f3cfc0962dc0b2521"
+  integrity sha512-TVTV9Y/N0OeDDRk341CALJvKwpSmAy83aaNpjkwz2gp9DEyTFCm6xfj901ho4Mny5KezGpFioZqlRYBIde3NQg==
   dependencies:
     "@types/react" "*"
 
@@ -2617,10 +2617,10 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-gestalt@^12.6.1:
-  version "12.6.1"
-  resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-12.6.1.tgz#f4b0e847185548d3721e1991db5a43bb88e2d7c0"
-  integrity sha512-riNgCG7AIdEkRBpCM51eQI89MYP42GVU4k0v9exhKAo9K8AMZPSSEa671OjgBQKS2SWnqZpeuMosFDPpwexoWQ==
+gestalt@^13.4.1:
+  version "13.4.1"
+  resolved "https://registry.yarnpkg.com/gestalt/-/gestalt-13.4.1.tgz#3b0ea24dc44b867022e451d42982b0bfc73a0637"
+  integrity sha512-EoW+frnH8aFTWnuRZ+MM5FpSCHZuW7U9ku8mCHeXqAb+of85mZqZZi7FY9lASXlaV6It+JPvs7UfDKG+hh3JcA==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.7.2"
