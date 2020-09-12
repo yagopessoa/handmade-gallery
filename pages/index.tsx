@@ -49,22 +49,22 @@ export default function Home({ items }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Handmade Gallery | Thais Kuga</title>
+        <title>Handmade Gallery</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeadingContainer>
         <Heading size="lg">Handmade Gallery</Heading>
       </HeadingContainer>
       <Container>
-        {items.map(({ node }) => (
-          <Card key={`post-${node._meta.uid}`}>
+        {items.map(({ node: { _meta: { uid }, images, title } }) => (
+          <Card key={`post-${uid}`}>
             <CardContent>
-              <Image src={node.images[0]?.image?.url} />
-              <h3>{node.title[0].text}</h3>
+              <Image src={images[0]?.image?.url} />
+              <h3>{title[0].text}</h3>
               <Button
                 color="red"
                 text="Ver"
-                onClick={handleItemClick(`items/${node._meta.uid}`)}
+                onClick={handleItemClick(`items/${uid}`)}
               />
             </CardContent>
           </Card>

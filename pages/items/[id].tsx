@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { GetStaticPropsContext } from 'next';
 import { Button } from 'gestalt';
+import { Carousel } from 'react-responsive-carousel';
 
 import { fetchAPI } from '../../lib/api-prismic';
 import {
@@ -38,14 +39,7 @@ interface ItemProps {
 }
 
 function Item({ item }: ItemProps) {
-  // console.log(item);
-
   const { images, title: titles, description: descriptions } = item;
-
-  const [image] = images;
-  const {
-    image: { url: imageUrl },
-  } = image;
 
   const [mainTitle] = titles;
   const { text: title } = mainTitle;
@@ -60,14 +54,25 @@ function Item({ item }: ItemProps) {
   return (
     <>
       <Head>
-        <title>{item.title[0].text} | Handmade Gallery | Thais Kuga</title>
+        <title>{title} | Handmade Gallery</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
         <Card>
           <CardContent>
             <LeftContent>
-              <Image src={imageUrl} />
+              <Carousel
+                autoPlay
+                infiniteLoop
+                showThumbs={false}
+                showStatus={false}
+              >
+                {images.map(({ image: { url } }) => (
+                  <div>
+                    <Image src={url} />
+                  </div>
+                ))}
+              </Carousel>
             </LeftContent>
             <RightContent>
               <div>
@@ -145,7 +150,7 @@ export async function getStaticPaths() {
 
   return {
     paths: edges.map(({ node }) => `/items/${node._meta.uid}`) || [],
-    fallback: false,
+    fallback: true,
   };
 }
 

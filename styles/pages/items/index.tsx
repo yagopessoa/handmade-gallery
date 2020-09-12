@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Button } from 'gestalt';
 
 import { BODY_TEXT_COLOR } from '../../_constants';
 
