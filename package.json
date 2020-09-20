@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "framer-motion": "^2.6.15",
     "gestalt": "^13.4.1",
     "next": "9.5.3",
     "prismic-javascript": "^3.0.2",

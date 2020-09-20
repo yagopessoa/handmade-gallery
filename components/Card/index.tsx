@@ -1,8 +1,13 @@
 import React from 'react';
-import { Container } from './styles';
+import { MainContainer, ChildContainer } from './styles';
 
-const Card: React.FC = ({ children }) => {
-  return <Container>{children}</Container>;
+interface CardProps {
+  isChild?: boolean;
+}
+
+const Card: React.FC<CardProps> = ({ children, isChild = false }) => {
+  if (isChild) return <ChildContainer>{children}</ChildContainer>;
+  return <MainContainer>{children}</MainContainer>;
 };
 
 export default Card;

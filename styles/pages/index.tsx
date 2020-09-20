@@ -1,12 +1,26 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const HeadingContainer = styled.div`
   padding: 32px 40px 0 40px;
 `;
 
-export const Container = styled.div`
+export const Container = styled(motion.div).attrs(() => ({
+  variants: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  },
+  initial: 'hidden',
+  animate: 'show',
+}))`
   width: 100%;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   padding: 24px;
 
