@@ -52,7 +52,7 @@ function Tag({ items = [], tag = '' }: TagProps) {
       </HeadingContainer>
       <Container>
         {items.map(({ node: { _meta: { uid }, images, title } }) => (
-          <Card key={`post-${uid}`}>
+          <Card key={`post-${uid}`} isChild>
             <CardContent>
               <Image src={images[0]?.image?.url} />
               <h3>{title[0].text}</h3>
